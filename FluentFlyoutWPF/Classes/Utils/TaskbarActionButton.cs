@@ -83,6 +83,8 @@ internal sealed class TaskbarActionButton : Window
 /// </summary>
 internal static class TaskbarHelpers
 {
+    private static readonly NLog.Logger Logger = NLog.LogManager.GetCurrentClassLogger();
+
     private static readonly Guid IID_IPropertyStore = new("886d8eeb-8cf2-4446-8d02-cdba1dbdcf99");
     private static readonly Guid PKEY_AppUserModelID_FmtId = new("9f4c2855-9f79-4b39-a8d0-e1d42de1d5f3");
     private const uint PKEY_AppUserModelID_Pid = 5;
@@ -136,7 +138,8 @@ internal static class TaskbarHelpers
             if (hwnd == IntPtr.Zero)
                 return;
 
-            if (SHGetPropertyStoreForWindow(hwnd, ref IID_IPropertyStore, out IPropertyStore store) != 0 || store == null)
+            Guid riid = IID_IPropertyStore; // static readonly fields cannot be passed by ref
+            if (SHGetPropertyStoreForWindow(hwnd, ref riid, out IPropertyStore store) != 0 || store == null)
                 return;
 
             try
