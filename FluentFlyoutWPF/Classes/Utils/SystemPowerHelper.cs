@@ -138,31 +138,44 @@ internal static class SystemPowerHelper
         {
             using RegistryKey key = Registry.CurrentUser.CreateSubKey(PersonalizationRegistryPath);
             key.SetValue(ColorPrevalenceValueName, 0, RegistryValueKind.DWord);
-
-            SendMessageTimeout(HWND_BROADCAST, WM_DWMCOLORIZATIONCOLORCHANGED, IntPtr.Zero, IntPtr.Zero, SMTO_ABORTIFHUNG, 5000, out _);
         }
         catch (Exception ex)
         {
             Logger.Warn(ex, "Failed to reset ColorPrevalence");
         }
+
+        // broadcast asynchronously - see BroadcastThemeChanged for why
+        _ = Task.Run(() =>
+            SendMessageTimeout(HWND_BROADCAST, WM_DWMCOLORIZATIONCOLORCHANGED, IntPtr.Zero, IntPtr.Zero, SMTO_ABORTIFHUNG, 5000, out _));
     }
 
     /// <summary>
     /// Lets the shell and running apps know the theme changed. The same "ImmersiveColorSet" hint
     /// is also picked up by FluentFlyout's own WndProc (see WM_SETTINGCHANGE handling).
+    /// <para>
+    /// Runs on a background thread on purpose: broadcasting synchronously from the UI thread can
+    /// deadlock. While Explorer processes the broadcast it may synchronously message FluentFlyout's
+    /// own windows (e.g. the taskbar widget window); if our UI thread is concurrently stuck in
+    /// SendMessageTimeout waiting for Explorer, both sides wait for each other forever - observed
+    /// as a full app hang plus a frozen taskbar (Event ID 1002). SMTO_ABORTIFHUNG cannot detect
+    /// this because neither thread is idle.
+    /// </para>
     /// </summary>
     private static void BroadcastThemeChanged()
     {
-        IntPtr immersiveColorSet = Marshal.StringToHGlobalUni("ImmersiveColorSet");
-        try
+        _ = Task.Run(() =>
         {
-            SendMessageTimeout(HWND_BROADCAST, WM_SETTINGCHANGE, IntPtr.Zero, immersiveColorSet, SMTO_ABORTIFHUNG, 5000, out _);
-            SendMessageTimeout(HWND_BROADCAST, WM_THEMECHANGED, IntPtr.Zero, IntPtr.Zero, SMTO_ABORTIFHUNG, 5000, out _);
-        }
-        finally
-        {
-            Marshal.FreeHGlobal(immersiveColorSet);
-        }
+            IntPtr immersiveColorSet = Marshal.StringToHGlobalUni("ImmersiveColorSet");
+            try
+            {
+                SendMessageTimeout(HWND_BROADCAST, WM_SETTINGCHANGE, IntPtr.Zero, immersiveColorSet, SMTO_ABORTIFHUNG, 5000, out _);
+                SendMessageTimeout(HWND_BROADCAST, WM_THEMECHANGED, IntPtr.Zero, IntPtr.Zero, SMTO_ABORTIFHUNG, 5000, out _);
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(immersiveColorSet);
+            }
+        });
     }
 
     #endregion
