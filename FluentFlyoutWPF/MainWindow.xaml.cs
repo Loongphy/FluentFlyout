@@ -42,6 +42,9 @@ public partial class MainWindow : MicaWindow
     private IntPtr _hookId = IntPtr.Zero;
     private LowLevelKeyboardProc _hookProc;
 
+    private TaskbarActionButton? _themeToggleButton;
+    private TaskbarActionButton? _sleepButton;
+
     private CancellationTokenSource cts; // to close the flyout after a certain time
     private long _lastFlyoutTime = 0;
 
@@ -108,6 +111,35 @@ public partial class MainWindow : MicaWindow
         }
 
         Logger.Info("Starting FluentFlyout MainWindow");
+
+        // taskbar action buttons: theme toggle + sleep
+        try
+        {
+            bool isLight = SystemPowerHelper.GetCurrentSystemTheme();
+            _themeToggleButton = new TaskbarActionButton(
+                (string)FindResource(isLight ? "TrayIcon_SwitchToDark" : "TrayIcon_SwitchToLight"),
+                () =>
+                {
+                    SystemPowerHelper.ToggleSystemTheme();
+                    ThemeManager.ApplySavedTheme();
+                    _themeToggleButton?.SetTitle((string)FindResource(
+                        SystemPowerHelper.GetCurrentSystemTheme() ? "TrayIcon_SwitchToDark" : "TrayIcon_SwitchToLight"));
+                },
+                "FluentFlyout.ThemeToggle",
+                TaskbarIcons.CreateThemeIcon());
+            _themeToggleButton.Show();
+
+            _sleepButton = new TaskbarActionButton(
+                (string)FindResource("TrayIcon_Sleep"),
+                SystemPowerHelper.SleepNow,
+                "FluentFlyout.Sleep",
+                TaskbarIcons.CreateSleepIcon());
+            _sleepButton.Show();
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(ex, "Failed to create taskbar action buttons");
+        }
 
         // in the existing instance, listen for the signal to open settings
         Task.Run(() =>
@@ -1496,42 +1528,6 @@ public partial class MainWindow : MicaWindow
     private void MicaWindow_MouseEnter(object sender, MouseEventArgs e) // keep the flyout open when mouse is over
     {
         ShowMediaFlyout();
-    }
-
-    private void NotifyIconMenu_Opened(object sender, RoutedEventArgs e)
-    {
-        try
-        {
-            // theme toggle item: show the action that will happen + matching icon
-            bool isLight = SystemPowerHelper.GetCurrentSystemTheme();
-            NotifyIconToggleThemeText.Text = (string)FindResource(isLight ? "TrayIcon_SwitchToDark" : "TrayIcon_SwitchToLight");
-            NotifyIconToggleThemeIconLight.Visibility = isLight ? Visibility.Collapsed : Visibility.Visible;
-            NotifyIconToggleThemeIconDark.Visibility = isLight ? Visibility.Visible : Visibility.Collapsed;
-        }
-        catch (Exception ex)
-        {
-            Logger.Error(ex, "Failed to refresh power tray menu items");
-        }
-    }
-
-    private void NotifyIconToggleTheme_Click(object sender, RoutedEventArgs e)
-    {
-        try
-        {
-            SystemPowerHelper.ToggleSystemTheme();
-
-            // make FluentFlyout itself follow the new Windows theme right away
-            ThemeManager.ApplySavedTheme();
-        }
-        catch (Exception ex)
-        {
-            Logger.Error(ex, "Failed to toggle Windows theme");
-        }
-    }
-
-    private void NotifyIconSleep_Click(object sender, RoutedEventArgs e)
-    {
-        SystemPowerHelper.SleepNow();
     }
 
     private void NotifyIconQuit_Click(object sender, RoutedEventArgs e)

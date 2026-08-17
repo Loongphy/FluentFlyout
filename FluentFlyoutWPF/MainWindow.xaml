@@ -188,27 +188,10 @@
             Icon="/Resources/FluentFlyout2.ico"
             Margin="0,127,0,114" Visibility="Collapsed">
             <tray:NotifyIcon.Menu>
-                <ContextMenu Opened="NotifyIconMenu_Opened">
+                <ContextMenu>
                     <ui:MenuItem x:Name="NotifyIconSettings" Header="{DynamicResource TrayIcon_SettingsOption}" Click="openSettings">
                         <ui:MenuItem.Icon>
                             <ui:SymbolIcon Symbol="Settings20"/>
-                        </ui:MenuItem.Icon>
-                    </ui:MenuItem>
-                    <Separator></Separator>
-                    <ui:MenuItem x:Name="NotifyIconToggleTheme" Click="NotifyIconToggleTheme_Click">
-                        <ui:MenuItem.Header>
-                            <TextBlock x:Name="NotifyIconToggleThemeText" Text="{DynamicResource TrayIcon_ToggleTheme}"/>
-                        </ui:MenuItem.Header>
-                        <ui:MenuItem.Icon>
-                            <Grid>
-                                <ui:SymbolIcon x:Name="NotifyIconToggleThemeIconLight" Symbol="WeatherSunny20"/>
-                                <ui:SymbolIcon x:Name="NotifyIconToggleThemeIconDark" Symbol="WeatherMoon20" Visibility="Collapsed"/>
-                            </Grid>
-                        </ui:MenuItem.Icon>
-                    </ui:MenuItem>
-                    <ui:MenuItem x:Name="NotifyIconSleep" Header="{DynamicResource TrayIcon_Sleep}" Click="NotifyIconSleep_Click">
-                        <ui:MenuItem.Icon>
-                            <ui:SymbolIcon Symbol="Sleep20"/>
                         </ui:MenuItem.Icon>
                     </ui:MenuItem>
                     <Separator></Separator>
