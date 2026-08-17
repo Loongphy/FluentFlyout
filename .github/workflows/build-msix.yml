@@ -33,9 +33,11 @@ jobs:
         uses: microsoft/setup-msbuild@v3
 
       - name: Decode signing certificate
-        if: ${{ secrets.MSIX_CERT_BASE64 != '' }}
+        if: ${{ env.MSIX_CERT_BASE64 != '' }}
+        env:
+          MSIX_CERT_BASE64: ${{ secrets.MSIX_CERT_BASE64 }}
         run: |
-          $cert = [Convert]::FromBase64String("${{ secrets.MSIX_CERT_BASE64 }}")
+          $cert = [Convert]::FromBase64String("$env:MSIX_CERT_BASE64")
           [IO.File]::WriteAllBytes("$env:RUNNER_TEMP\cert.pfx", $cert)
 
       - name: Restore NuGet packages
