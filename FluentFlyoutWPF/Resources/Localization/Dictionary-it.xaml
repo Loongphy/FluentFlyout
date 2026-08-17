@@ -288,4 +288,8 @@ Puoi contribuire alla traduzione su</system:String>
     <system:String x:Key="SearchSettings">Cerca impostazioni</system:String>
     <system:String x:Key="TaskbarWidgetScrollingTextTitle">Testo Scorrevole</system:String>
     <system:String x:Key="TaskbarWidgetScrollingTextSpeedTitle">Velocità di scorrimento</system:String>
+    <system:String x:Key="TrayIcon_ToggleTheme">Toggle theme</system:String>
+    <system:String x:Key="TrayIcon_SwitchToDark">Switch to dark mode</system:String>
+    <system:String x:Key="TrayIcon_SwitchToLight">Switch to light mode</system:String>
+    <system:String x:Key="TrayIcon_Sleep">Sleep</system:String>
 </ResourceDictionary>

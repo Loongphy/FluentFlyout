@@ -201,6 +201,10 @@ Pots ajudar a contribuir amb les traduccions a</system:String>
     <system:String x:Key="TrayIcon_ViewLogsOption">Visualitza els registres</system:String>
     <system:String x:Key="TrayIcon_ReportBugOption">Informeu d'un error</system:String>
     <system:String x:Key="TrayIcon_QuitOption">Sortir de FluentFlyout</system:String>
+    <system:String x:Key="TrayIcon_ToggleTheme">Toggle theme</system:String>
+    <system:String x:Key="TrayIcon_SwitchToDark">Switch to dark mode</system:String>
+    <system:String x:Key="TrayIcon_SwitchToLight">Switch to light mode</system:String>
+    <system:String x:Key="TrayIcon_Sleep">Sleep</system:String>
     <system:String x:Key="PixelsUnit">px</system:String>
     <system:String x:Key="UpdateToastTitle">FluentFlyout s'ha actualitzat!</system:String>
     <system:String x:Key="UpdateToastMessage">Estàs usant la versió {0}.</system:String>

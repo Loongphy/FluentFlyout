@@ -98,6 +98,10 @@ Puedes ayudar a contribuir con las traducciones en</system:String>
     <system:String x:Key="TrayIcon_GitHubRepositoryOption">Repositorio</system:String>
     <system:String x:Key="TrayIcon_ReportBugOption">Reportar fallo</system:String>
     <system:String x:Key="TrayIcon_QuitOption">Salir de FluentFlyout</system:String>
+    <system:String x:Key="TrayIcon_ToggleTheme">Toggle theme</system:String>
+    <system:String x:Key="TrayIcon_SwitchToDark">Switch to dark mode</system:String>
+    <system:String x:Key="TrayIcon_SwitchToLight">Switch to light mode</system:String>
+    <system:String x:Key="TrayIcon_Sleep">Sleep</system:String>
     <system:String x:Key="AnimationEasingStyleTitle">Estilo de Suavizado de Animaciones</system:String>
     <system:String x:Key="TaskbarWidgetCustomizationTitle">Widget de la Barra de Tareas</system:String>
     <system:String x:Key="TaskbarWidgetDescription">Un widget compacto que aparece en la Barra de Tareas de Windows para tener acceso instantáneo a tu contenido multimedia. Haz click en el widget para expandir el Flyout Multimedia.</system:String>

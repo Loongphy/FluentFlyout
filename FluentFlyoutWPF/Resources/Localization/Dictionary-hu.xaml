@@ -268,4 +268,8 @@ Segíts te is a fordításban a(z)</system:String>
     <system:String x:Key="MasterVolumeText">Fő hangerő</system:String>
     <system:String x:Key="TaskbarWidgetFixedWidthTitle">Widget szélességének rögzítése</system:String>
     <system:String x:Key="TaskbarWidgetFixedWidthDescription">A widget szélességét tartsa állandóan, ne pedig a címhez és az előadó nevéhez igazítsa</system:String>
+    <system:String x:Key="TrayIcon_ToggleTheme">Toggle theme</system:String>
+    <system:String x:Key="TrayIcon_SwitchToDark">Switch to dark mode</system:String>
+    <system:String x:Key="TrayIcon_SwitchToLight">Switch to light mode</system:String>
+    <system:String x:Key="TrayIcon_Sleep">Sleep</system:String>
 </ResourceDictionary>

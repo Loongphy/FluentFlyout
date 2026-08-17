@@ -49,6 +49,10 @@ Anmerkung: Als Open-Source-Projekt sind diese Funktionen auch kostenlos verfügb
     <system:String x:Key="TrayIcon_SettingsOption">Einstellungen</system:String>
     <system:String x:Key="TrayIcon_ReportBugOption">Fehler melden</system:String>
     <system:String x:Key="TrayIcon_QuitOption">FluentFlyout beenden</system:String>
+    <system:String x:Key="TrayIcon_ToggleTheme">Toggle theme</system:String>
+    <system:String x:Key="TrayIcon_SwitchToDark">Switch to dark mode</system:String>
+    <system:String x:Key="TrayIcon_SwitchToLight">Switch to light mode</system:String>
+    <system:String x:Key="TrayIcon_Sleep">Sleep</system:String>
     <system:String x:Key="LaunchOnStartupTitle">Beim Start starten</system:String>
     <system:String x:Key="EasingQuadratic" xml:space="preserve"> Quadratisch</system:String>
     <system:String x:Key="EasingCubic" xml:space="preserve"> Kubisch</system:String>

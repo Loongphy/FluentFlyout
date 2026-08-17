@@ -84,6 +84,10 @@
 يمكنك المساهمة في الترجمات على</system:String>
     <system:String x:Key="LockWindow_InsertPressed">مفتاح الإدراج مضغوط</system:String>
     <system:String x:Key="TrayIcon_QuitOption">إيقاف FluentFlyout</system:String>
+    <system:String x:Key="TrayIcon_ToggleTheme">Toggle theme</system:String>
+    <system:String x:Key="TrayIcon_SwitchToDark">Switch to dark mode</system:String>
+    <system:String x:Key="TrayIcon_SwitchToLight">Switch to light mode</system:String>
+    <system:String x:Key="TrayIcon_Sleep">Sleep</system:String>
     <system:String x:Key="AnimationDurationScaleTitle">مدة الرسوم المتحركة</system:String>
     <system:String x:Key="AnimationSpeedOff">إيقاف</system:String>
     <system:String x:Key="EasingSine" xml:space="preserve"> جيبية</system:String>

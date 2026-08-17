@@ -236,6 +236,10 @@ You can help contribute translations on</System:String>
     <System:String x:Key="TrayIcon_ViewLogsOption">View logs</System:String>
     <System:String x:Key="TrayIcon_ReportBugOption">Report bug</System:String>
     <System:String x:Key="TrayIcon_QuitOption">Quit FluentFlyout</System:String>
+    <System:String x:Key="TrayIcon_ToggleTheme">Toggle theme</System:String>
+    <System:String x:Key="TrayIcon_SwitchToDark">Switch to dark mode</System:String>
+    <System:String x:Key="TrayIcon_SwitchToLight">Switch to light mode</System:String>
+    <System:String x:Key="TrayIcon_Sleep">Sleep</System:String>
     <System:String x:Key="PixelsUnit">px</System:String>
     <System:String x:Key="UpdateToastTitle">FluentFlyout has been updated!</System:String>
     <System:String x:Key="UpdateToastMessage">You are now on {0}.</System:String>

@@ -99,6 +99,10 @@ Můžete pomoct s překlady na</system:String>
     <system:String x:Key="TrayIcon_GitHubRepositoryOption">Repositář</system:String>
     <system:String x:Key="TrayIcon_ReportBugOption">Nahlásit chybu</system:String>
     <system:String x:Key="TrayIcon_QuitOption">Zavřít FluentFlyout</system:String>
+    <system:String x:Key="TrayIcon_ToggleTheme">Toggle theme</system:String>
+    <system:String x:Key="TrayIcon_SwitchToDark">Switch to dark mode</system:String>
+    <system:String x:Key="TrayIcon_SwitchToLight">Switch to light mode</system:String>
+    <system:String x:Key="TrayIcon_Sleep">Sleep</system:String>
     <system:String x:Key="AppLanguageDescriptionLink">Weblate</system:String>
     <system:String x:Key="LockWindow_NumLock">Num Lock</system:String>
     <system:String x:Key="LockWindow_ScrollLock">Scroll Lock</system:String>

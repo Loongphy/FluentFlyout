@@ -286,4 +286,8 @@
     <system:String x:Key="TaskbarWidgetScrollingTextSpeedDescription">लेख ऊपर-नीचे करनो की गति (पिक्सेल/सेकंड)। प्रीसेट 20 है।</system:String>
     <system:String x:Key="OnboardingStepsCounter">{1} में से {0} चरण</system:String>
     <system:String x:Key="TaskbarVisualizerBaselineAutoHideDescription">जब कोई ऑडियो नहीं चल रहा हो, तो बेसलाइन को अपने-आप छिपा दो</system:String>
+    <system:String x:Key="TrayIcon_ToggleTheme">Toggle theme</system:String>
+    <system:String x:Key="TrayIcon_SwitchToDark">Switch to dark mode</system:String>
+    <system:String x:Key="TrayIcon_SwitchToLight">Switch to light mode</system:String>
+    <system:String x:Key="TrayIcon_Sleep">Sleep</system:String>
 </ResourceDictionary>

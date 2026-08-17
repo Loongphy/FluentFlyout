@@ -42,4 +42,8 @@
     <system:String x:Key="LockWindow_NumLock">நம் லாக்</system:String>
     <system:String x:Key="LockWindow_ScrollLock">ஸ்க்ரோல் லாக்</system:String>
     <system:String x:Key="LockWindow_InsertPressed">இன்சர்ட் அழுத்தப்பட்டது</system:String>
+    <system:String x:Key="TrayIcon_ToggleTheme">Toggle theme</system:String>
+    <system:String x:Key="TrayIcon_SwitchToDark">Switch to dark mode</system:String>
+    <system:String x:Key="TrayIcon_SwitchToLight">Switch to light mode</system:String>
+    <system:String x:Key="TrayIcon_Sleep">Sleep</system:String>
 </ResourceDictionary>

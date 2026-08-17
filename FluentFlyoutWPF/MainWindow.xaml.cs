@@ -1498,6 +1498,42 @@ public partial class MainWindow : MicaWindow
         ShowMediaFlyout();
     }
 
+    private void NotifyIconMenu_Opened(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            // theme toggle item: show the action that will happen + matching icon
+            bool isLight = SystemPowerHelper.GetCurrentSystemTheme();
+            NotifyIconToggleThemeText.Text = (string)FindResource(isLight ? "TrayIcon_SwitchToDark" : "TrayIcon_SwitchToLight");
+            NotifyIconToggleThemeIconLight.Visibility = isLight ? Visibility.Collapsed : Visibility.Visible;
+            NotifyIconToggleThemeIconDark.Visibility = isLight ? Visibility.Visible : Visibility.Collapsed;
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(ex, "Failed to refresh power tray menu items");
+        }
+    }
+
+    private void NotifyIconToggleTheme_Click(object sender, RoutedEventArgs e)
+    {
+        try
+        {
+            SystemPowerHelper.ToggleSystemTheme();
+
+            // make FluentFlyout itself follow the new Windows theme right away
+            ThemeManager.ApplySavedTheme();
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(ex, "Failed to toggle Windows theme");
+        }
+    }
+
+    private void NotifyIconSleep_Click(object sender, RoutedEventArgs e)
+    {
+        SystemPowerHelper.SleepNow();
+    }
+
     private void NotifyIconQuit_Click(object sender, RoutedEventArgs e)
     {
         try

@@ -288,4 +288,8 @@ Vous pouvez contribuer aux traductions sur</system:String>
     <system:String x:Key="TaskbarWidgetScrollingTextLoopForeverDescription">Faire défiler le texte indéfiniment dans une seule direction au lieu d'un défilement aller-retour.</system:String>
     <system:String x:Key="TaskbarWidgetScrollingTextSpeedTitle">Vitesse de défilement</system:String>
     <system:String x:Key="SearchSettings">Rechercher les paramètres</system:String>
+    <system:String x:Key="TrayIcon_ToggleTheme">Toggle theme</system:String>
+    <system:String x:Key="TrayIcon_SwitchToDark">Switch to dark mode</system:String>
+    <system:String x:Key="TrayIcon_SwitchToLight">Switch to light mode</system:String>
+    <system:String x:Key="TrayIcon_Sleep">Sleep</system:String>
 </ResourceDictionary>

@@ -250,4 +250,8 @@
     <system:String x:Key="Finish">結束</system:String>
     <system:String x:Key="TaskbarWidgetFixedWidthTitle">固定小工具寬度</system:String>
     <system:String x:Key="EnableScrollTitle">啟用 Scroll Lock 指示符</system:String>
+    <system:String x:Key="TrayIcon_ToggleTheme">切換主題</system:String>
+    <system:String x:Key="TrayIcon_SwitchToDark">切換到深色模式</system:String>
+    <system:String x:Key="TrayIcon_SwitchToLight">切換到淺色模式</system:String>
+    <system:String x:Key="TrayIcon_Sleep">睡眠</system:String>
 </ResourceDictionary>

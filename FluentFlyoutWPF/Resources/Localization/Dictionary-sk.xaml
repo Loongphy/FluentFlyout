@@ -284,4 +284,8 @@ Môžete pomôcť s prekladmi na</system:String>
     <system:String x:Key="TaskbarWidgetScrollingTextLoopForeverDescription">Nekonečná slučka textu jedným smerom namiesto posúvania tam a späť.</system:String>
     <system:String x:Key="TaskbarWidgetScrollingTextSpeedTitle">Rýchlosť Posúvania</system:String>
     <system:String x:Key="TaskbarWidgetScrollingTextSpeedDescription">Rýchlosť, ktorou sa text posúva (pixel za sekundu). Predvolené: 20.</system:String>
+    <system:String x:Key="TrayIcon_ToggleTheme">Toggle theme</system:String>
+    <system:String x:Key="TrayIcon_SwitchToDark">Switch to dark mode</system:String>
+    <system:String x:Key="TrayIcon_SwitchToLight">Switch to light mode</system:String>
+    <system:String x:Key="TrayIcon_Sleep">Sleep</system:String>
 </ResourceDictionary>

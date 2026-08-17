@@ -170,4 +170,8 @@ verbergt herhalen, shuffle en spelerinfo</system:String>
     <system:String x:Key="UpdateAvailableNotificationTitle">Update Verkrijgbaar!</system:String>
     <system:String x:Key="UpdateAvailableNotificationMessage">Een niewe versie ({0}) is verkrijgbaar.</system:String>
     <system:String x:Key="UpdateAvailableNotificationButton">Download Update</system:String>
+    <system:String x:Key="TrayIcon_ToggleTheme">Toggle theme</system:String>
+    <system:String x:Key="TrayIcon_SwitchToDark">Switch to dark mode</system:String>
+    <system:String x:Key="TrayIcon_SwitchToLight">Switch to light mode</system:String>
+    <system:String x:Key="TrayIcon_Sleep">Sleep</system:String>
 </ResourceDictionary>

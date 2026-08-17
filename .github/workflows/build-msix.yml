@@ -33,6 +33,7 @@ jobs:
         uses: microsoft/setup-msbuild@v3
 
       - name: Decode signing certificate
+        if: ${{ secrets.MSIX_CERT_BASE64 != '' }}
         run: |
           $cert = [Convert]::FromBase64String("${{ secrets.MSIX_CERT_BASE64 }}")
           [IO.File]::WriteAllBytes("$env:RUNNER_TEMP\cert.pfx", $cert)

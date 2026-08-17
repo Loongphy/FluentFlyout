@@ -288,4 +288,8 @@ Not: Açık kaynaklı bir proje olduğundan, bu özellikler GitHub'daki manuel y
     <system:String x:Key="TaskbarWidgetScrollingTextLoopForeverDescription">Metni ileri geri kaydırmak yerine tek yönde sonsuz döngüye al.</system:String>
     <system:String x:Key="TaskbarWidgetScrollingTextSpeedTitle">Kaydırma Hızı</system:String>
     <system:String x:Key="TaskbarWidgetScrollingTextSpeedDescription">Metnin kayma hızı (piksel/saniye). Varsayılan: 20.</system:String>
+    <system:String x:Key="TrayIcon_ToggleTheme">Toggle theme</system:String>
+    <system:String x:Key="TrayIcon_SwitchToDark">Switch to dark mode</system:String>
+    <system:String x:Key="TrayIcon_SwitchToLight">Switch to light mode</system:String>
+    <system:String x:Key="TrayIcon_Sleep">Sleep</system:String>
 </ResourceDictionary>

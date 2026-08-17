@@ -288,4 +288,8 @@
     <system:String x:Key="TaskbarWidgetScrollingTextLoopForeverDescription">텍스트를 한 방향으로 계속 스크롤하기.</system:String>
     <system:String x:Key="TaskbarWidgetScrollingTextSpeedTitle">스크롤 속도</system:String>
     <system:String x:Key="TaskbarWidgetScrollingTextSpeedDescription">텍스트 스크롤 속도 설정(픽셀/초). 기본값은 20.</system:String>
+    <system:String x:Key="TrayIcon_ToggleTheme">Toggle theme</system:String>
+    <system:String x:Key="TrayIcon_SwitchToDark">Switch to dark mode</system:String>
+    <system:String x:Key="TrayIcon_SwitchToLight">Switch to light mode</system:String>
+    <system:String x:Key="TrayIcon_Sleep">Sleep</system:String>
 </ResourceDictionary>

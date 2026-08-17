@@ -248,4 +248,8 @@
     <system:String x:Key="VolumeMixerHighlightTitle">הדגשת אפליקציות המשמיעות שמע</system:String>
     <system:String x:Key="VolumeMixerHighlightDescription">הצג אילו אפליקציות מפיקות שמע כרגע</system:String>
     <system:String x:Key="MasterVolumeText">עוצמת קול כללית</system:String>
+    <system:String x:Key="TrayIcon_ToggleTheme">Toggle theme</system:String>
+    <system:String x:Key="TrayIcon_SwitchToDark">Switch to dark mode</system:String>
+    <system:String x:Key="TrayIcon_SwitchToLight">Switch to light mode</system:String>
+    <system:String x:Key="TrayIcon_Sleep">Sleep</system:String>
 </ResourceDictionary>

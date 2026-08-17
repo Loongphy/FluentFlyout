@@ -286,4 +286,8 @@
     <system:String x:Key="TaskbarWidgetScrollingTextSpeedDescription">テキストがスクロールする速度 (ピクセル/秒)。既定値は 20。</system:String>
     <system:String x:Key="TaskbarVisualizerBaselineAutoHideDescription">オーディオが再生されていないときは、ベースラインを自動的に非表示にします</system:String>
     <system:String x:Key="TaskbarWidgetScrollingTitle">スクロールを有効化</system:String>
+    <system:String x:Key="TrayIcon_ToggleTheme">Toggle theme</system:String>
+    <system:String x:Key="TrayIcon_SwitchToDark">Switch to dark mode</system:String>
+    <system:String x:Key="TrayIcon_SwitchToLight">Switch to light mode</system:String>
+    <system:String x:Key="TrayIcon_Sleep">Sleep</system:String>
 </ResourceDictionary>
