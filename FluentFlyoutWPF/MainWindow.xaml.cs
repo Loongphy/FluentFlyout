@@ -115,15 +115,13 @@ public partial class MainWindow : MicaWindow
         // taskbar action buttons: theme toggle + sleep
         try
         {
-            bool isLight = SystemPowerHelper.GetCurrentSystemTheme();
             _themeToggleButton = new TaskbarActionButton(
-                (string)FindResource(isLight ? "TrayIcon_SwitchToDark" : "TrayIcon_SwitchToLight"),
+                (string)FindResource("TrayIcon_ToggleTheme"),
                 () =>
                 {
                     SystemPowerHelper.ToggleSystemTheme();
                     ThemeManager.ApplySavedTheme();
-                    _themeToggleButton?.SetTitle((string)FindResource(
-                        SystemPowerHelper.GetCurrentSystemTheme() ? "TrayIcon_SwitchToDark" : "TrayIcon_SwitchToLight"));
+                    RefreshTaskbarButtonTitles();
                 },
                 "FluentFlyout.ThemeToggle",
                 TaskbarIcons.CreateThemeIcon());
@@ -135,6 +133,15 @@ public partial class MainWindow : MicaWindow
                 "FluentFlyout.Sleep",
                 TaskbarIcons.CreateSleepIcon());
             _sleepButton.Show();
+
+            // keep button labels in sync when the UI language changes
+            SettingsManager.Current.PropertyChanged += (_, e) =>
+            {
+                if (e.PropertyName == nameof(UserSettings.AppLanguage))
+                {
+                    Dispatcher.InvokeAsync(RefreshTaskbarButtonTitles);
+                }
+            };
         }
         catch (Exception ex)
         {
@@ -221,6 +228,7 @@ public partial class MainWindow : MicaWindow
         Dispatcher.Invoke(() =>
         {
             LocalizationManager.ApplyLocalization();
+            RefreshTaskbarButtonTitles();
 
             try // update last known version. gets the version of the app, works only in release mode
             {
@@ -1528,6 +1536,24 @@ public partial class MainWindow : MicaWindow
     private void MicaWindow_MouseEnter(object sender, MouseEventArgs e) // keep the flyout open when mouse is over
     {
         ShowMediaFlyout();
+    }
+
+    /// <summary>
+    /// Updates the taskbar action button labels (theme toggle shows the action that would happen).
+    /// Called on startup (after localization is applied), after toggling the theme and on language change.
+    /// </summary>
+    private void RefreshTaskbarButtonTitles()
+    {
+        try
+        {
+            bool isLight = SystemPowerHelper.GetCurrentSystemTheme();
+            _themeToggleButton?.SetTitle((string)FindResource(isLight ? "TrayIcon_SwitchToDark" : "TrayIcon_SwitchToLight"));
+            _sleepButton?.SetTitle((string)FindResource("TrayIcon_Sleep"));
+        }
+        catch (Exception ex)
+        {
+            Logger.Error(ex, "Failed to refresh taskbar button titles");
+        }
     }
 
     private void NotifyIconQuit_Click(object sender, RoutedEventArgs e)

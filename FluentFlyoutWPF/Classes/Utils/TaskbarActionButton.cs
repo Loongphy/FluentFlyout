@@ -88,6 +88,7 @@ internal static class TaskbarHelpers
     private static readonly Guid IID_IPropertyStore = new("886d8eeb-8cf2-4446-8d02-cdba1dbdcf99");
     private static readonly Guid PKEY_AppUserModelID_FmtId = new("9f4c2855-9f79-4b39-a8d0-e1d42de1d5f3");
     private const uint PKEY_AppUserModelID_Pid = 5;
+    private const ushort VT_LPWSTR = 31;
 
     [ComImport, Guid("886d8eeb-8cf2-4446-8d02-cdba1dbdcf99"), InterfaceType(ComInterfaceType.InterfaceIsIUnknown)]
     private interface IPropertyStore
@@ -120,9 +121,6 @@ internal static class TaskbarHelpers
     [DllImport("shell32.dll", SetLastError = true)]
     private static extern int SHGetPropertyStoreForWindow(IntPtr hwnd, ref Guid riid, out IPropertyStore ppv);
 
-    [DllImport("propsys.dll", CharSet = CharSet.Unicode, PreserveSig = true)]
-    private static extern int InitPropVariantFromString(string psz, out PROPVARIANT ppropvar);
-
     [DllImport("ole32.dll")]
     private static extern int PropVariantClear(ref PROPVARIANT pvar);
 
@@ -144,8 +142,14 @@ internal static class TaskbarHelpers
 
             try
             {
-                if (InitPropVariantFromString(appUserModelId, out PROPVARIANT pv) != 0)
-                    return;
+                // InitPropVariantFromString is an ordinal-only export in propsys.dll (no name
+                // export), so build the PROPVARIANT manually: VT_LPWSTR over a CoTaskMem string.
+                // PropVariantClear below frees the string via CoTaskMemFree.
+                PROPVARIANT pv = new()
+                {
+                    vt = VT_LPWSTR,
+                    union1 = Marshal.StringToCoTaskMemUni(appUserModelId)
+                };
 
                 try
                 {
